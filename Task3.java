@@ -6,11 +6,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-/*
- * К калькулятору из предыдущего дз добавить логирование.
-1 + 3 = 4
- */
-
 public class Task3{
     public static void main(String args[]){
         Logger logger = Logger.getLogger("MyLogger");
