@@ -51,7 +51,6 @@ public class Task6 {
         Deque<String> list_2 = new LinkedList<>(Arrays.asList("8","5","3"));
         Deque<String> list_3 = new LinkedList<>(Arrays.asList("6","1","5"));
         Deque<String> list_4 = new LinkedList<>(Arrays.asList("3","3","3"));
-        System.out.println("--------------------------------------------------------------");
 
         // Выводим исходные данные
         System.out.println("На старте: ");
