@@ -1,52 +1,44 @@
-// Реализовать простой калькулятор
+// Реализовать простой калькулятор, добавить логирование
 
 import java.util.Scanner;
-public class Task3 {
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
-    static int scanNumber() {
-        Scanner scan = new Scanner(System.in);
-        int number = scan.nextInt();
-        return number;
-    }
-    static String scanOperations() {
-        Scanner scan = new Scanner(System.in);
-        String operations = scan.nextLine();
-        return operations;
+/*
+ * К калькулятору из предыдущего дз добавить логирование.
+1 + 3 = 4
+ */
 
-    }
-    static int getResult(String opr, int num1, int num2) {
-        int result = 0;
-        switch (opr) {
-            case "+":
-                result = num1 + num2;
-                break;
-            case "-":
-                result = num1 - num2;
-                break;
-            case "*":
-                result = num1 * num2;
-                break;
-            case "/":
-                result = num1 / num2;
-
-            default:
-                System.out.println("Введите оператор: -, +, *, /");
-                break;
-        }
-        return result;
-
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Введите первое число: ");
-        int num1 = scanNumber();
-        System.out.println("Введите оператор: -, +, *, /");
-        String operations = scanOperations();
-        System.out.println("Введите второе число: ");
-        int num2 = scanNumber();
-        int result = getResult(operations, num1, num2);
-        System.out.printf("%d %s %d = %d", num1, operations, num2, result);
+public class Task3{
+    public static void main(String args[]){
+        Logger logger = Logger.getLogger("MyLogger");
+        logger.setLevel(Level.INFO);
+        ConsoleHandler info = new ConsoleHandler();
+        logger.addHandler(info);
+        Scanner sc = new Scanner(System.in, "Cp866");
+        SimpleFormatter sf = new SimpleFormatter();
+        info.setFormatter(sf);
+        System.out.print("Ввод числа ->");
+        int first = sc.nextInt();
+        System.out.print("Ввод знака ->");
+        String zn = sc.next();
+        System.out.print("Ввод числа ->");
+        int second = sc.nextInt();
+        sc.close();
+        if (zn.equals("+")) {
+            System.out.println((first+second));
+            logger.log(Level.INFO, "сложение");}
+        else if (zn.equals("-")) {
+            System.out.println(first-second);
+            logger.log(Level.INFO, "вычитание");}
+        else if (zn.equals("*")) {
+            System.out.print(first*second);
+            logger.log(Level.INFO, "умножение");}
+        else if (zn.equals("/")) {
+            System.out.print(first/second);
+            logger.log(Level.INFO, "деление");}
 
     }
-
 }
